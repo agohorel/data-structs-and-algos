@@ -1,23 +1,20 @@
 const fs = require("fs");
+const values = fs
+  .readFileSync("values.txt", "utf8")
+  .split(",")
+  .map((x) => Number(x));
 
-class LinearSearch {
-  constructor() {
-    this.target = 73;
-    this.values = fs
-      .readFileSync("values.txt", "utf8")
-      .split(",")
-      .map((x) => Number(x));
+function linearSearch(values, target) {
+  for (let i = 0; i < values.length; i++) {
+    if (values[i] === target) {
+      console.log(`Found ${target} at index ${i}!`);
+      return i;
+    }
   }
-
-  search = () => {
-    this.values.forEach((value) => {
-      if (value === this.target) {
-        console.log(value);
-        return value;
-      }
-    });
-  };
+  console.log("Value not found!");
+  return false;
 }
 
-const linearSearch = new LinearSearch();
-linearSearch.search();
+linearSearch(values, 1);
+linearSearch(values, 99);
+linearSearch(values, 1110);

@@ -1,17 +1,14 @@
 data = open("values.txt", "r")
 values = [int(v) for v in data.read().split(",")]
 
-class LinearSearch:
-    def __init__(self):
-        self.values = values
-        self.target = 73
+def linear_search(values, target):
+    for idx,val in enumerate(values):
+        if val == target:
+            print(f"Found {target} at index {idx}!")
+            return idx
+    print("Value not found!")
+    return False
 
-    def search(self):
-        for i in self.values:
-            if i == self.target:
-                print(i)
-                return i
-
-
-linear_search = LinearSearch()
-linear_search.search()
+linear_search(values, 1)
+linear_search(values, 99)
+linear_search(values, 1110)
