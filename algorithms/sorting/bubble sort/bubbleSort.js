@@ -14,7 +14,8 @@ function bubbleSort(values) {
       }
     }
   }
-  console.log(values);
+  return values;
 }
 
-bubbleSort(values);
+const sortedList = bubbleSort(values);
+console.log(sortedList);

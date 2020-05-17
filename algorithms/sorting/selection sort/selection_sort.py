@@ -8,6 +8,7 @@ def selection_sort(values):
             if values[j] < values[lowest]:
                 lowest = j
         values[i], values[lowest] = values[lowest], values[i]
-    print(values)
+    return values
 
-selection_sort(values)
+sortedList = selection_sort(values)
+print(sortedList)

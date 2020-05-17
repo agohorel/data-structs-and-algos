@@ -17,7 +17,8 @@ function selectionSort(values) {
       values[i] = temp;
     }
   }
-  console.log(values);
+  return values;
 }
 
-selectionSort(values);
+const sortedList = selectionSort(values);
+console.log(sortedList);
