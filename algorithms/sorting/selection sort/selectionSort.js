@@ -1,29 +1,23 @@
 const fs = require("fs");
+const values = fs
+  .readFileSync("values.txt", "utf8")
+  .split(",")
+  .map((n) => Number(n));
 
-class SelectionSort {
-  constructor() {
-    this.values = fs
-      .readFileSync("values.txt", "utf8")
-      .split(",")
-      .map((n) => Number(n));
-    this.smallestIndex = 0;
-  }
-
-  sort = () => {
-    for (let i = 0; i < this.values.length; i++) {
-      this.smallestIndex = i;
-      for (let j = i + 1; j < this.values.length; j++) {
-        if (this.values[j] < this.values[this.smallestIndex]) {
-          this.smallestIndex = j;
-        }
-        const temp = this.values[this.smallestIndex];
-        this.values[this.smallestIndex] = this.values[i];
-        this.values[i] = temp;
+function selectionSort(values) {
+  let smallestIndex;
+  for (let i = 0; i < values.length; i++) {
+    smallestIndex = i;
+    for (let j = i + 1; j < values.length; j++) {
+      if (values[j] < values[smallestIndex]) {
+        smallestIndex = j;
       }
+      const temp = values[smallestIndex];
+      values[smallestIndex] = values[i];
+      values[i] = temp;
     }
-    console.log(this.values);
-  };
+  }
+  console.log(values);
 }
 
-const selectionSort = new SelectionSort();
-selectionSort.sort();
+selectionSort(values);
