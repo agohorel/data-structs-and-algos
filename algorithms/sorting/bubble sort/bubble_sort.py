@@ -1,19 +1,11 @@
 data = open("values.txt", "r")
 values = [int(v) for v in data.read().split(",")]
 
+def bubble_sort(values):
+    for i in range(len(values)):
+        for j in range(len(values)-i-1):
+            if values[j] > values[j+1]:
+                values[j], values[j+1] = values[j+1], values[j]
+    print(values)
 
-class BubbleSort:
-    def __init__(self):
-        self.values = values
-
-
-    def sort(self):
-        for i in range(len(self.values)):
-            for j in range(len(self.values) - i - 1):
-                if self.values[j] > self.values[j+1]:
-                    self.values[j], self.values[j+1] = self.values[j+1], self.values[j]
-        print(self.values)
-
-
-bubble_sort = BubbleSort()
-bubble_sort.sort()
+bubble_sort(values)

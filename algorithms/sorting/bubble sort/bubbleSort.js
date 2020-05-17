@@ -1,26 +1,20 @@
 const fs = require("fs");
+const values = fs
+  .readFileSync("values.txt", "utf8")
+  .split(",")
+  .map((i) => Number(i));
 
-class BubbleSort {
-  constructor() {
-    this.values = fs
-      .readFileSync("values.txt", "utf8")
-      .split(",")
-      .map((i) => Number(i));
-  }
-
-  sort = () => {
-    for (let i = 0; i < this.values.length; i++) {
-      for (let j = 0; j < this.values.length - i - 1; j++) {
-        if (this.values[j] > this.values[j + 1]) {
-          const temp = this.values[j];
-          this.values[j] = this.values[j + 1];
-          this.values[j + 1] = temp;
-        }
+function bubbleSort(values) {
+  for (let i = 0; i < values.length; i++) {
+    for (let j = 0; j < values.length - i - 1; j++) {
+      if (values[j] > values[j + 1]) {
+        const temp = values[j];
+        values[j] = values[j + 1];
+        values[j + 1] = temp;
       }
     }
-    console.log(this.values);
-  };
+  }
+  console.log(values);
 }
 
-bubbleSort = new BubbleSort();
-bubbleSort.sort();
+bubbleSort(values);
