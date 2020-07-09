@@ -2,7 +2,7 @@ data = open("values.txt", "r")
 values = [int(v) for v in data.read().split(",")]
 
 def binary_search(values, target):
-    low = 0;
+    low = 0
     mid = len(values)//2
     high = len(values)-1
 
@@ -12,7 +12,7 @@ def binary_search(values, target):
 
         if guess == target:
             print(f"Found {target} at index {mid}!")
-            return guess
+            return mid
         elif guess < target:
             low = mid + 1
         elif guess > target:
