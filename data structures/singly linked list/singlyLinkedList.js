@@ -12,7 +12,7 @@ class LinkedList {
 
   print = () => {
     if (!this.head) {
-      print(null);
+      console.log(null);
     } else {
       let cur = this.head;
       console.log(`${cur.value}<---head`);
