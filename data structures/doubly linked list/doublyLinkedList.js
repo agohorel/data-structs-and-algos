@@ -14,7 +14,7 @@ class LinkedList {
   }
 
   print = () => {
-    if (!this.head) print("list is empty!");
+    if (!this.head) console.log("list is empty!");
     else {
       let cur = this.head;
       console.log(`${cur.value}<---head`);
@@ -142,6 +142,30 @@ class LinkedList {
     this.tail.next = null;
     this.length--;
   };
+
+  reverse = () => {
+    if (!this.head) return;
+
+    let temp = null;
+    let current = this.head;
+    const tail = this.head; // store permanent ref to old head/new tail to set at the end
+
+    while (current != null) {
+      // store ref to (current) previous node
+      temp = current.prev;
+      // swap pointers
+      current.prev = current.next;
+      current.next = temp;
+      // advance pointer backwards
+      current = current.prev;
+    }
+
+    // test for edge case where list is empty or has only one element
+    if (temp != null) {
+      this.head = temp.prev;
+      this.tail = tail;
+    }
+  };
 }
 
 const LL = new LinkedList();
@@ -155,6 +179,10 @@ console.log("test adding to tail");
 LL.addToTail(4);
 LL.addToTail(5);
 LL.addToTail(6);
+LL.print();
+
+console.log("test reversing the list");
+LL.reverse();
 LL.print();
 
 console.log("test removing from head");
@@ -171,4 +199,8 @@ LL.print();
 
 console.log("test removing at index");
 LL.removeAtIndex(1);
+LL.print();
+
+console.log("test reversing the list");
+LL.reverse();
 LL.print();
